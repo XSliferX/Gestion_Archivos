@@ -6,10 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.UIManager;
 
-
 public class GestorDeArchivos extends JFrame {
+
     private final JButton[] buttons;
     private final JLabel resultLabel;
+    private final JButton backButton;
 
     public GestorDeArchivos() {
         try {
@@ -23,6 +24,15 @@ public class GestorDeArchivos extends JFrame {
         setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         setIconImage(new ImageIcon("Gar.jpg").getImage());
+        backButton = new JButton("Volver");
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                resultLabel.setText("Menú principal");
+            }
+        });
+
+        add(backButton, BorderLayout.NORTH);
 
         addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -41,7 +51,7 @@ public class GestorDeArchivos extends JFrame {
             }
 
         });
-       // getContentPane().setBackground(new Color(30, 30, 30)); // Cambia el color a tu preferencia
+        // getContentPane().setBackground(new Color(30, 30, 30)); // Cambia el color a tu preferencia
         setLayout(new BorderLayout());
 
         JPanel buttonPanel = new JPanel(new GridLayout(3, 3));
@@ -91,18 +101,17 @@ public class GestorDeArchivos extends JFrame {
         // Agregar una etiqueta de texto
         JLabel textLabel = new JLabel(buttonText, SwingConstants.CENTER);
         customPanel.add(textLabel, BorderLayout.SOUTH);
-        
+
         //customPanel.setBackground(new Color(30, 30, 30)); // Cambia el color a tu preferencia
-        
         // Configurar el panel personalizado como el contenido del botón
         button.add(customPanel);
-        
-       // button.setBackground(new Color(30, 30, 30)); // Cambia el color a tu preferencia
-       
+
+        // button.setBackground(new Color(30, 30, 30)); // Cambia el color a tu preferencia
         return button;
     }
 
     private class FileManagerActionListener implements ActionListener {
+
         private final String action;
 
         public FileManagerActionListener(String action) {
@@ -117,15 +126,24 @@ public class GestorDeArchivos extends JFrame {
 
     private void Accion(String action) {
         switch (action) {
-            case "Permisos" -> Permisos.main(new String[0]);
-            case "Copiar" -> CopiarArchivo.main(new String[0]);
-            case "Crear Fichero" -> CrearFichero.main(new String[0]);
-            case "Borrar Fichero" -> BorrarArchivo.main(new String[0]);
-            case "Extensiones" -> Extensiones.main(new String[0]);
-            case "Leer Fichero" -> LeerFichero.main(new String[0]);
-            case "Escribir Fichero" -> EscribirFichero.main(new String[0]);
-            case "Ruta Fichero" -> RutaFichero.main(new String[0]);
-            case "Listado Directorio" -> ListaDirectorio.main(new String[0]);
+            case "Permisos" ->
+                Permisos.main(new String[0]);
+            case "Copiar" ->
+                CopiarArchivo.main(new String[0]);
+            case "Crear Fichero" ->
+                CrearFichero.main(new String[0]);
+            case "Borrar Fichero" ->
+                BorrarArchivo.main(new String[0]);
+            case "Extensiones" ->
+                Extensiones.main(new String[0]);
+            case "Leer Fichero" ->
+                LeerFichero.main(new String[0]);
+            case "Escribir Fichero" ->
+                EscribirFichero.main(new String[0]);
+            case "Ruta Fichero" ->
+                RutaFichero.main(new String[0]);
+            case "Listado Directorio" ->
+                ListaDirectorio.main(new String[0]);
         }
     }
 
